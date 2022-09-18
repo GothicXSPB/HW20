@@ -5,12 +5,22 @@ namespace Lesson16.Test
         [TestCase(4, -3, -3, 0)]
         [TestCase(2, 8, -2, -5)]
         [TestCase(2, -8, 2, 5)]
-        [TestCase(-2, -3, 5, -4)]
+        [TestCase(-2, -3, 5, -4)]        
         public void SolutionLinearEquationsTest(double a, double b, double c, double expected)
         {
             double actual = Calculator.SolutionLinearEquations(a, b, c);
 
             Assert.AreEqual(expected, actual);
+        }
+
+        [Test]
+        public void SolutionLinearEquationsTest_WhenAIsZero_ShuldArgumentExaption()
+        {
+            double a = 0;
+            double b = 412;
+            double c = 12;
+
+            Assert.Throws<ArgumentException>(() => Calculator.SolutionLinearEquations(a, b, c));           
         }
 
         [TestCase(0, 0, 0)]
@@ -22,13 +32,13 @@ namespace Lesson16.Test
         [TestCase(0, 1, -1)]
         [TestCase(-5, 2, -7)]
         [TestCase(-5, 0, -5)]
-
         public void BiggerOrLessTest(int a, int b, int expected)
         {
             int actual = Calculator.BiggerOrLess(a, b);
 
             Assert.AreEqual(expected, actual);
         }
+
         [TestCase(0, true)]
         [TestCase(5, true)]
         [TestCase(25, true)]
@@ -42,6 +52,7 @@ namespace Lesson16.Test
 
             Assert.AreEqual(expected, actual);
         }
+
         [TestCase(-6,6,0)]
         [TestCase(-7,7,0)]
         [TestCase(-7,0,-7)]
@@ -53,6 +64,7 @@ namespace Lesson16.Test
             Assert.AreEqual(expected, actual);
 
         }
+
         [TestCase(2,1)]
         [TestCase(3,2)]
         [TestCase(4,3)]
@@ -62,6 +74,15 @@ namespace Lesson16.Test
             int actual = Calculator.NumberOfFibonacci(a);
             Assert.AreEqual(expected, actual);
         }
+
+        [Test]
+        public void NumberOfFibonacciTest_WhenAIsLessThanOne_ShuldArgumentOutOfRangeException()
+        {
+            int a = -3;
+
+            Assert.Throws<ArgumentOutOfRangeException>(() => Calculator.NumberOfFibonacci(a));
+        }
+
         [TestCase(121,2)]
         [TestCase(777,3)]
         [TestCase(0,0)]
@@ -72,6 +93,7 @@ namespace Lesson16.Test
             int actual = Calculator.NumberOfOddNumbers(a);
             Assert.AreEqual(expected, actual);
         }
+
         [TestCase(123,321)]
         [TestCase(0,0)]
         [TestCase(808,808)]
@@ -80,6 +102,7 @@ namespace Lesson16.Test
             int actual = Calculator.MirrorDigital(a);
             Assert.AreEqual(expected, actual);
         }
+
         [TestCase(123,43,true)]
         [TestCase(122,43,false)]
         [TestCase(0,43,false)]        

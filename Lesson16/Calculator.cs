@@ -3,10 +3,14 @@
     public class Calculator
     {
         //1.Метод получает на вход 3 числа (A, B и С). Верните решение(значение X) линейного уравнения стандартного вида, где A*X+B=C.
-
+       
         public static double SolutionLinearEquations(double a, double b, double c)
         {
             double result = 0;
+            if (a == 0)
+            {
+                throw new ArgumentException("First argument cannot be 0");
+            }
             result = (c - b) / a;
             return result;
         }
@@ -205,6 +209,11 @@
         {
             int a = 0;
             int b = 1;
+
+            if(n<1)
+            {
+                throw new ArgumentOutOfRangeException("Argument cannot be less than 1");
+            }
 
             for (int i = 1; i <= n - 1; i++)
             {
